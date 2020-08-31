@@ -5,15 +5,15 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 128, 46, 64 )
+region = Rect2( 0, 192, 46, 64 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 46, 128, 46, 64 )
+region = Rect2( 46, 192, 46, 64 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
-region = Rect2( 92, 128, 46, 64 )
+region = Rect2( 92, 192, 46, 64 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
@@ -29,33 +29,33 @@ region = Rect2( 92, 0, 46, 64 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 192, 46, 64 )
+region = Rect2( 0, 64, 46, 64 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 46, 192, 46, 64 )
+region = Rect2( 46, 64, 46, 64 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 92, 192, 46, 64 )
+region = Rect2( 92, 64, 46, 64 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 64, 46, 64 )
+region = Rect2( 0, 128, 46, 64 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 46, 64, 46, 64 )
+region = Rect2( 46, 128, 46, 64 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 92, 64, 46, 64 )
+region = Rect2( 92, 128, 46, 64 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
-"name": "walk right",
+"name": "walk up",
 "speed": 8.0
 }, {
 "frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
@@ -65,18 +65,18 @@ animations = [ {
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
-"name": "walk up",
+"name": "walk left",
 "speed": 8.0
 }, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
-"name": "walk left",
+"name": "walk right",
 "speed": 8.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=14]
 radius = 8.0
-height = 0.0
+height = 16.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -85,10 +85,19 @@ script = ExtResource( 2 )
 position = Vector2( 0, -16 )
 frames = SubResource( 13 )
 animation = "walk up"
-frame = 2
+frame = 1
 playing = true
 offset = Vector2( 0, -6 )
 
 [node name="MovementCollider" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 14 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -1 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 600
+limit_smoothed = true

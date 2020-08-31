@@ -6,7 +6,6 @@
 extents = Vector2( 24, 96 )
 
 [node name="HouseRoofRed" type="StaticBody2D"]
-z_index = 101
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -64, -16 )

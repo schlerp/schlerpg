@@ -1,16 +1,16 @@
 extends KinematicBody2D
 
+# movement constants
 const ACCEL = 100
 const MAX_SPEED = 200
 const FRICTION = 100
 
-var screen_size  # Size of the game window
+# movement variables
 var velocity = Vector2.ZERO
 
 
 func _ready():
-	screen_size = get_viewport_rect().size
-
+	pass
 
 func _physics_process(_delta):
 	var input_vector = Vector2.ZERO
@@ -32,7 +32,6 @@ func _physics_process(_delta):
 
 
 func _process(_delta):
-	
 	if velocity.length() > 0:
 		$AnimatedSprite.play()
 	else:
@@ -48,8 +47,12 @@ func _process(_delta):
 			$AnimatedSprite.animation = "walk down"
 		if velocity.y < 0:
 			$AnimatedSprite.animation = "walk up"
+	
+	if Input.is_action_just_pressed('ui_select'):
+		Global.hud.toggle_overlay()
 
 
 func start(pos):
 	position = pos
 	show()
+

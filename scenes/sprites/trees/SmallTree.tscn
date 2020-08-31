@@ -7,7 +7,6 @@ radius = 16.0
 height = 5.72205e-05
 
 [node name="SmallTree" type="StaticBody2D"]
-z_index = 101
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -24 )
